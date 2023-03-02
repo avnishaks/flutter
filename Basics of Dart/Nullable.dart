@@ -29,7 +29,6 @@ main(){
   if(amount) print("Green Sign");
   else if(!amount) print("Red Signal");
   
-
 }
 
 bool? getInternetStatus(){
