@@ -17,17 +17,18 @@ main(){
    to not Nullable Variables
   */
   
-   if(amount==null){
+ 
+  if(amount==null){
     print("Internet is Down");
-    return;
+    amount=true;
   }
-
   bool amountNN=amount!;
   // amountNN=null -> we can't asssign nullable value to not nullable variable
   amountNN=true;
 
   if(amount) print("Green Sign");
-  else if(!amount) print("Red Sign");
+  else if(!amount) print("Red Signal");
+  
 
 }
 
