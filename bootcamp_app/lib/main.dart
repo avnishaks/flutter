@@ -88,6 +88,10 @@ Type of Widget in Scaffold :-
   // ElevatedButton , built by Google Engineers.
 
   
+-----------------------------------------------------
+
+Conatiner in Flutter :- 
+
 
 
 
@@ -97,24 +101,21 @@ Type of Widget in Scaffold :-
 import 'package:flutter/material.dart';
 
 main() {
-  void myfunction(){
+  void myfunction() {
     print("Avnish Singh");
   }
+
   runApp(MaterialApp(
     home: Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: ElevatedButton(
-            onPressed: myfunction,
-            child: Text(
-              "AKS",
-              style: TextStyle(
-                  fontSize: 120,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'RobotoMono',
-                  color: Colors.red.shade900),
-            ),
-          ),
+      appBar: AppBar(
+        title: Text("Conatiner Screen"),
+      ),
+      body: Center(
+        child: Container(
+          width: 100,
+          height: 100,
+          color: Colors.red,
+          child: Text("Avnish"),
         ),
       ),
     ),
