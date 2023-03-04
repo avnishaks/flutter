@@ -20,18 +20,15 @@ Development.
 Eg : AppBar class different number of the properties used , we can google it and explore it.
 
 
+Type of Widget in Scaffold :- 
 
-*/
+   void function for onpress method of floatingActionButton:- 
 
-import 'package:flutter/material.dart';
-
-main() {
-  void myfunction(){
+   void myfunction(){
     print("AKS");
   }
-  runApp(MaterialApp(
-    home: Scaffold(
-      appBar: AppBar(
+
+   appBar: AppBar(
        leading: Text("Leader of the Board"),
         title: Text("My Personal Blog"),
       ),
@@ -41,6 +38,85 @@ main() {
         child: Text("+"),
       ),
       body: Text("Body of the our Application"),
+
+
+  --------------------------------------------------
+
+  Wrapping of the Widget :- 
+
+   home: Scaffold(
+      body: Text("Hello World"),
+    ),
+
+  -> Text message is not coming properly , hence we have to use the proper formating for the Widget
+  So we have to use the concept of Wrapping of the Widget ( For the Unsafe Area , to use the Safe 
+  Area we have to wrap the widget)
+
+  runApp(MaterialApp(
+  home: Scaffold(
+      body: SafeArea(
+        child: Text(
+          "AKS",
+          style: TextStyle(
+              fontSize: 120,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'RobotoMono',
+              color: Colors.red.shade900),
+        ),
+      ),
+    ),
+  ));
+
+
+
+  // Guesture Detactor and Child to provide action the Tapping over it 
+   child: GestureDetector(
+            onTap: myfunction,
+            child: Text(
+              "AKS",
+              style: TextStyle(
+                  fontSize: 120,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'RobotoMono',
+                  color: Colors.red.shade900),
+            ),
+          ),
+
+---------------------------------------------------
+
+  // Instead of GestureDetector we can use one of the feature
+  // ElevatedButton , built by Google Engineers.
+
+  
+
+
+
+
+*/
+
+import 'package:flutter/material.dart';
+
+main() {
+  void myfunction(){
+    print("Avnish Singh");
+  }
+  runApp(MaterialApp(
+    home: Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: ElevatedButton(
+            onPressed: myfunction,
+            child: Text(
+              "AKS",
+              style: TextStyle(
+                  fontSize: 120,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'RobotoMono',
+                  color: Colors.red.shade900),
+            ),
+          ),
+        ),
+      ),
     ),
   ));
 }
