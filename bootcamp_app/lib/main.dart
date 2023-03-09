@@ -98,29 +98,23 @@ Conatiner in Flutter :-
 
 */
 
+
 import 'package:flutter/material.dart';
+import 'package:bootcamp_app/login.dart';
+import 'package:bootcamp_app/register.dart';
 
-main() {
-  void myfunction() {
-    print("Avnish Singh");
-  }
 
+void main() {
+ 
   runApp(MaterialApp(
-    home: Scaffold(
-      appBar: AppBar(
-        title: Text("Conatiner Screen"),
-      ),
-      body: Center(
-        child: Container(
-          width: 100,
-          height: 100,
-          color: Colors.red,
-          child: Text("Avnish"),
-        ),
-      ),
-    ),
+    debugShowCheckedModeBanner:true,
+    initialRoute: 'login',
+    routes: {
+      'login':(context)=>MyLogin(),
+      'register':(context)=>MyRegister()
+    },
+
   ));
-
-
-  //" Log in Sign up Feature Based on UI in Flutter"
+  
 }
+
