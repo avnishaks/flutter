@@ -4,8 +4,6 @@ List<Color> myColors = [
   Colors.red,
   Colors.yellow,
   Colors.blue,
-  Colors.brown,
-  Colors.green
 ];
 
 void main() => runApp(MaterialApp(
@@ -13,6 +11,7 @@ void main() => runApp(MaterialApp(
       home: myHome(),
     ));
 
+// ignore: camel_case_types
 class myHome extends StatelessWidget {
   const myHome({
     Key? key,
@@ -21,19 +20,17 @@ class myHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          ...myColors.map((color) => getMyContainer(color)).toList(),
-          ElevatedButton(onPressed: () => null, child: Text("Button"))
-        ]),
-      ),
-    );
+        body: SafeArea(
+            child: ListView.builder(
+      itemBuilder: (context, index) => getMyContainer(index),
+      itemCount: 3,
+    )));
   }
 
-  Widget getMyContainer(Color color) {
+  Widget getMyContainer(int index) {
     return Container(
-      width: 50,
-      color: color,
+      height: 250,
+      color: myColors[index],
     );
   }
 }
