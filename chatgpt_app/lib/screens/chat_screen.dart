@@ -2,11 +2,9 @@ import 'package:chatgpt_app/constants/constants.dart';
 import 'package:chatgpt_app/services/assets_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
+import '../services/api_service.dart';
 import '../services/services.dart';
 import '../widgets/chat_widget.dart';
-import '../widgets/text_widget.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -92,7 +90,13 @@ class _ChatScreenState extends State<ChatScreen> {
                         ),
                       ),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () async{
+                            try{
+                              await ApiService.getModels();
+                            } catch(error){
+                              print("error $error");
+                            }
+                          },
                           icon: const Icon(
                             Icons.send,
                             color: Colors.white,
