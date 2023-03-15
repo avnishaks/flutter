@@ -5,6 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import '../widgets/chat_widget.dart';
+import '../widgets/text_widget.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -42,7 +43,31 @@ class _ChatScreenState extends State<ChatScreen> {
         title: const Text("ChatGPT"),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              await showModalBottomSheet(
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20),
+                    ),
+                  ),
+                  backgroundColor: scaffoldBackgroundColor,
+                  context: context,
+                  builder: (context) {
+                    return Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: Row(
+                        children: const [
+                          Flexible(
+                            child: TextWidget(
+                              label: "choose modal",
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  });
+            },
             icon: const Icon(Icons.more_vert_rounded, color: Colors.white),
           ),
         ],
