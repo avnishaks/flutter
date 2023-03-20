@@ -1,6 +1,8 @@
+import 'package:chatgpt_app/providers/models_provider.dart';
 import 'package:chatgpt_app/services/api_service.dart';
 import 'package:chatgpt_app/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../constants/constants.dart';
 
@@ -13,11 +15,13 @@ class ModelsDrowDownWidget extends StatefulWidget {
 }
 
 class _ModelsDrowDownWidgetState extends State<ModelsDrowDownWidget> {
-  String currentModel = "davinci";
+  String ? currentModel;
   @override
   Widget build(BuildContext context) {
+    final modelsProvider=Provider.of<ModelsProvider>(context,listen:false);
+    currentModel=modelsProvider.getCurrentModel;
     return FutureBuilder(
-      future: ApiService.getModels(),
+      future: modelsProvider.getAllModels(),
       builder:(BuildContext context,AsyncSnapshot snapshot){
         if(snapshot.hasError){
           return Center(child: TextWidget(label: snapshot.error.toString()),);
@@ -41,6 +45,7 @@ class _ModelsDrowDownWidgetState extends State<ModelsDrowDownWidget> {
                       setState(() {
                         currentModel = value.toString();
                       });
+                      modelsProvider.setCurrentModel(value.toString());
                     },
                   ),
               );
